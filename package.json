@@ -1,0 +1,18 @@
+{
+  "name": "pusdip-ai-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "dev": "nodemon - exec 'ts-node' src/app.ts",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "typescript": "^5.5.4"
+  }
+}
