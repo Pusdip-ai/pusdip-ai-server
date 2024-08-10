@@ -10,7 +10,8 @@
       "name": "Launch App",
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "npm: build",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "outputCapture": "std"
     }
   ]
 }
