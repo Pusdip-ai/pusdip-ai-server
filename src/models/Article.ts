@@ -25,6 +25,7 @@ export interface IArticle {
   links?: {
     doi?: string;
     url?: string;
+    fulltext?: string;
     source?: ArticleSource;
   };
 }
