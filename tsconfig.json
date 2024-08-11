@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "Node16",
+    "target": "es2021",
+    "moduleResolution": "node",
+    "module": "CommonJS",
     "rootDir": "./src",
-    "moduleResolution": "Node16",
     "types": ["vitest/globals"],
     "outDir": "./dist",
     "esModuleInterop": true,
@@ -11,8 +11,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "allowJs": true,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true
   },
   "include": ["src/**/*.ts"]
 }
