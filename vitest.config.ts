@@ -8,7 +8,7 @@ export default defineConfig({
     setupFiles: ["dotenv/config"],
     testTimeout: 60 * 1000,
     env: {
-      ...config({ path: "./.env.local" }).parsed,
+      ...config({ path: "./.env" }).parsed,
     },
     environment: "node",
   },

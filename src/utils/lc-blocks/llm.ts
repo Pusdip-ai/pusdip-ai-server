@@ -1,28 +1,29 @@
-import { VertexAI, VertexAIEmbeddings } from "@langchain/google-vertexai";
+import {
+  ChatGoogleGenerativeAI,
+  GoogleGenerativeAIEmbeddings,
+} from "@langchain/google-genai";
+import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
-export const llm = new VertexAI({
-  model: "gemini-pro",
+export const llm = new ChatGoogleGenerativeAI({
+  model: "gemini-1.5-pro",
   safetySettings: [
     {
-      category: "HARM_CATEGORY_HARASSMENT",
-      threshold: "BLOCK_NONE",
+      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     },
     {
-      category: "HARM_CATEGORY_HATE_SPEECH",
-      threshold: "BLOCK_NONE",
+      category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     },
     {
-      category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-      threshold: "BLOCK_NONE",
+      category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     },
     {
-      category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-      threshold: "BLOCK_NONE",
+      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     },
   ],
-  location: "us-central1",
 });
 
-export const embeddings = new VertexAIEmbeddings({
-  model: "text-embedding-004",
-});
+export const embeddings = new GoogleGenerativeAIEmbeddings();

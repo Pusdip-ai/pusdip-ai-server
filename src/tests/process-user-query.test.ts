@@ -8,23 +8,23 @@ import {
 
 describe("Process user query prompts", () => {
   test("fixSpellingAndGrammarPrompt", async () => {
-    console.log(
-      await fixSpellingAndGrammarPrompt
-        .pipe(llm)
-        .pipe(new StringOutputParser())
-        .invoke({
-          text: "mi is studan, mi go tu schoo",
-        })
-    );
+    const res1 = await fixSpellingAndGrammarPrompt
+      .pipe(llm)
+      .pipe(new StringOutputParser())
+      .invoke({
+        text: "mi is studan, mi go tu schoo",
+      });
 
-    console.log(
-      await fixSpellingAndGrammarPrompt
-        .pipe(llm)
-        .pipe(new StringOutputParser())
-        .invoke({
-          text: "gw tuh ska tiramizuu loh yaaa brokk, lu apee??",
-        })
-    );
+    console.log(res1);
+
+    const res2 = await fixSpellingAndGrammarPrompt
+      .pipe(llm)
+      .pipe(new StringOutputParser())
+      .invoke({
+        text: "gw tuh ska tiramizuu loh yaaa brokk, lu apee??",
+      });
+
+    console.log(res2);
   });
   test("translateToEnglishPrompt", async () => {
     console.log(

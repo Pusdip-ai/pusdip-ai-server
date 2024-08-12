@@ -2,7 +2,9 @@ import { PromptTemplate } from "@langchain/core/prompts";
 
 export const fixSpellingAndGrammarPrompt = PromptTemplate.fromTemplate(
   `Given a text, fix the spelling and grammar errors according to the linguistic
-  rules of that language. Only return the corrected text in its original language.
+  rules of that language. If the text uses slang, convert it into the formal version
+  of that language. Only return the corrected text in its original language without
+  any kind of formatting.
 
   text: {text}`
 );
