@@ -10,6 +10,7 @@ import puschatRouter from "./routers/puschat";
 
 // Create an Express application
 const app = express();
+// TODO change to regular pino not pretty when not in dev for performamce
 app.use(pinoHTTPMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
