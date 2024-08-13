@@ -109,7 +109,8 @@ jobs:
           region: ${{ env.REGION }}
           # NOTE: If using a pre-built image, update the image name here
           image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ github.sha }}
-          env_vars: HOST=0.0.0.0
+          env_vars: |-
+            HOST=0.0.0.0
             GOOGLE_API_KEY= ${{secrets.GOOGLE_API_KEY}}
           flags: '--min-instances=1 "--args=--memory=2Gi"'
 
