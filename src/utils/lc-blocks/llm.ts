@@ -6,7 +6,7 @@ import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
 export const llm = new ChatGoogleGenerativeAI({
   model: "gemini-1.5-pro",
-  maxOutputTokens: 500,
+  maxOutputTokens: 1000,
   safetySettings: [
     {
       category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
