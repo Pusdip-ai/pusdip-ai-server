@@ -40,6 +40,15 @@ export const convertToElasticQueryPrompt = PromptTemplate.fromTemplate(
 
   Query: Jan 18 2022 covid cases
   Syntax: Jan AND 18 AND 2022 AND "covid cases"
+
+  Query: Persepsi terhadap dukungan organisasi dengan stres kerja
+  Syntax: "Organizational support" AND "job stress" AND perception
+
+  Query: Apa sih hubungan depresi dengan kesehatan dan makanan?
+  Syntax: depression AND health AND food
+
+  Query: kenapa tuh anak-anak suka bandel waktu umur 5 tahun ya?
+  Syntax: (children AND naughty) AND (5 years old OR 5 years OR young)
   ---EXAMPLES END---
 
   Translate this query:
