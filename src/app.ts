@@ -10,14 +10,16 @@ const PORT = process.env.PORT;
 const HOST = process.env.HOST;
 
 if (!PORT) {
-  logger.error("No port specified");
+  console.error("No port specified");
   process.exit(1);
 }
 
 if (!HOST) {
-  logger.error("No host specified");
+  console.error("No host specified");
   process.exit(1);
 }
+
+console.log(PORT, HOST);
 
 // Create an Express application
 const app = express();
