@@ -113,7 +113,7 @@ jobs:
             PORT=8080
             HOST=0.0.0.0
             GOOGLE_API_KEY= ${{secrets.GOOGLE_API_KEY}}
-          flags: '--min-instances=1 "--args=-memory=2Gi"'
+          flags: "--min-instances=1"
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output
