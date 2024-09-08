@@ -57,7 +57,7 @@ export const puschatHistoryAnswerPrompt = PromptTemplate.fromTemplate(
   answering, so you can get a holistic view of the subject matter. If you can't answer the question based on the resources, 
   try to provide a general answer based on your knowledge and available resources, but make sure to mention that the answer 
   is not available based on the resources.
-  - When the user mentions articles or resources, they mean the articles provided in the resources
+  - When the user mentions articles or resources, they mean the articles provided in the resources, ignore the articles in the provided chat history
   - Always cite your sources, use APA 7 in-text citation format.
   - Output and format your answer in HTML tags.
   - You are also provided a chat history, utilize the chat history to answer the user's latest question.
