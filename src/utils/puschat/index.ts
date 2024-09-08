@@ -4,6 +4,7 @@ import { ChatHistory } from "../../types/Puschat/Chat";
 import {
   fixOriginalLanguageChain,
   puschatAnswerChain,
+  puschatHistoryAnswerChain,
   standaloneQuestionChain,
 } from "./chains";
 import {
@@ -86,16 +87,17 @@ export const askPuschatHistoryLocalStore = async (
   const splittedDocs = await splitter.splitDocuments(docs);
   const vectorStore = await setupLocalVectorStore(splittedDocs);
   const similarDocs = await vectorStore.similaritySearch(standaloneQ, 10);
-  const resources = `
-  Docs: ${convertDocsToResources(similarDocs)}
-  Chat History: ${history.map((chat) => {
-    return `${chat.type}: ${chat.text}`;
-  })}
-  `;
+  const resources = convertDocsToResources(similarDocs);
+  const strHistory = history
+    .map((chat) => {
+      return `${chat.type}: ${chat.text}`;
+    })
+    .join(" ");
 
-  const answer = await puschatAnswerChain.invoke({
+  const answer = await puschatHistoryAnswerChain.invoke({
     resources,
     user_question: fixedOriginalQ,
+    history: strHistory,
   });
 
   return answer;
