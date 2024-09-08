@@ -1,4 +1,6 @@
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { Article } from "../../models/Article";
+import { ChatHistory } from "../../types/Puschat/Chat";
 import {
   fixOriginalLanguageChain,
   puschatAnswerChain,
@@ -9,7 +11,6 @@ import {
   convertDocsToResources,
   setupLocalVectorStore,
 } from "./utils";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 
 const splitter = new RecursiveCharacterTextSplitter({
   chunkSize: 1000,
@@ -60,6 +61,39 @@ export const askPuschatLocalStoreStream = async (
   const resources = convertDocsToResources(similarDocs);
 
   const answer = await puschatAnswerChain.stream({
+    resources,
+    user_question: fixedOriginalQ,
+  });
+
+  return answer;
+};
+
+export const askPuschatHistoryLocalStore = async (
+  q: string,
+  articles: Article[],
+  history: ChatHistory
+) => {
+  const fixedOriginalQ = await fixOriginalLanguageChain.invoke({
+    text: q,
+  });
+
+  const standaloneQ = await standaloneQuestionChain.invoke({
+    text: fixedOriginalQ,
+  });
+
+  // Setup VStore
+  const docs = convertArticlesToLocalDocs(articles);
+  const splittedDocs = await splitter.splitDocuments(docs);
+  const vectorStore = await setupLocalVectorStore(splittedDocs);
+  const similarDocs = await vectorStore.similaritySearch(standaloneQ, 10);
+  const resources = `
+  Docs: ${convertDocsToResources(similarDocs)}
+  Chat History: ${history.map((chat) => {
+    return `${chat.type}: ${chat.text}`;
+  })}
+  `;
+
+  const answer = await puschatAnswerChain.invoke({
     resources,
     user_question: fixedOriginalQ,
   });
