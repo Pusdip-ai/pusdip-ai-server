@@ -61,6 +61,7 @@ export const puschatHistoryAnswerPrompt = PromptTemplate.fromTemplate(
   - Always cite your sources, use APA 7 in-text citation format.
   - Output and format your answer in HTML tags.
   - You are also provided a chat history, utilize the chat history to answer the user's latest question.
+  - Answer in the language of the latest User question, not based on the chat history language. Example: if the user previously uses Indonesian but uses English on their latest question, answer in English.
   
   Example Response:
   <p>Halo! Berdasarkan informasi yang kamu berikan, menurut Alezahi (2021), kebahagiaan itu keren.</p>
