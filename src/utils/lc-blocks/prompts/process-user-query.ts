@@ -22,3 +22,9 @@ export const standaloneQuestionPrompt = PromptTemplate.fromTemplate(
 
   question: {question}`
 );
+
+export const summarizeTextPrompt = PromptTemplate.fromTemplate(
+  `Summarize the given text in it's own language:
+  
+  text: {text}`
+);
